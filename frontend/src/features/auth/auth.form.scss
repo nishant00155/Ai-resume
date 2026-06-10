@@ -1,0 +1,46 @@
+
+/* Card container */
+.form-container {
+  width: 350px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Heading */
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: rgb(65, 41, 133);
+}
+
+/* Input group */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: rgb(65, 41, 133);
+}
+
+.input-group input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: rgb(65, 41, 133);
+  outline: none;
+}
+
+
+
+

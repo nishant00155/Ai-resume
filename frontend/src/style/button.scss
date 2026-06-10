@@ -1,0 +1,32 @@
+/* Button */
+.button {
+  width: 100%;
+//   margin-left: 5px;
+//   margin-right: 5px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &.primary-button {
+    background: rgb(65, 41, 133);
+    color: #fff;
+    transition: border-radius 1s ease;
+  }
+
+  &.primary-button:hover {
+    border-radius: 25px;
+  }
+
+  /* Focus state */
+  // &:focus {
+  //   outline: 3px solid orange;
+  // }
+
+  /* Active state */
+  &:active {
+    background: rgb(211, 199, 184);
+  }
+}

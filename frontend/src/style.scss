@@ -1,0 +1,21 @@
+@use "./style/button.scss";
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background and base styles */
+html,
+body,
+#root {
+  background-color: rgb(236, 221, 202);
+  color: rgb(65, 41, 133);
+  font-family: system-ui, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
