@@ -127,33 +127,33 @@ const interviewReportJsonSchema = {
 
 const interviewReportSchema = z.fromJSONSchema(interviewReportJsonSchema);
 
-function cleanJsonString(str) {
-  return str.replace(/```json|```/g, "").trim();
-}
-
-async function generateInterviewReport(resume,jobDescription,selfDescription) {
+async function generateInterviewReport(
+  resume,
+  jobDescription,
+  selfDescription,
+) {
   const client = new GoogleGenAI({ apiKey: process.env.GOOGLE_GENAI_API_KEY });
 
   prompt = `You are an expert recruiter and career coach. You have been given a candidate's resume and a job description. Your task is to generate an interview report for the candidate based on the resume and job description. The report should include the following sections:
-Generate an interview report strictly in JSON format.
+
   1. resume: ${resume}
 2. jobDescription: ${jobDescription}
 3. selfDescription: ${selfDescription}
-`;
+Generate an interview report strictly in JSON format.`
+;
 
   const interaction = await client.interactions.create({
     model: "gemini-2.5-flash",
     input: prompt,
     response_format: {
       type: "object",
-    properties: interviewReportJsonSchema.properties,
-    required: interviewReportJsonSchema.required
+      properties: interviewReportJsonSchema.properties,
+      required: interviewReportJsonSchema.required,
     },
   });
-  const cleaned = cleanJsonString(interaction.output_text);
   const parsed = JSON.parse(interaction.output_text);
-
-  console.log(JSON.stringify(parsed, null, 2));
+  const report = JSON.stringify(parsed, null, 2);
+  console.log(report);
   return parsed;
 }
 
