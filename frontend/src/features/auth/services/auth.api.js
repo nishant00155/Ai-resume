@@ -41,7 +41,7 @@ export async function logout() {
 
 export async function profile() {
   try {
-    const response = await api.post("/profile");
+    const response = await api.get("/profile");
     return response.data;
   } catch (err) {
     console.log(err);
