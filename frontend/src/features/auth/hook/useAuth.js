@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../auth.context";
 import { login, register, logout, profile } from "../services/auth.api";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = async ({ email, password }) => {
     setLoading(true);
@@ -39,10 +40,18 @@ export const useAuth = () => {
 
   useEffect(() => {
     const getAndSetUser = async () => {
+      setLoading(true);
+
       try {
         const data = await profile();
         setUser(data.user);
-        navigate("/");
+
+        if (
+          location.pathname === "/login" ||
+          location.pathname === "/register"
+        ) {
+          navigate("/");
+        }
       } catch (err) {
         err;
       } finally {
@@ -51,7 +60,7 @@ export const useAuth = () => {
     };
 
     getAndSetUser();
-  }, []);
+  }, [location.pathname, navigate, setLoading, setUser]);
 
   return { user, loading, handleRegister, handleLogout, handleLogin };
 };

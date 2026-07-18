@@ -3,7 +3,7 @@ import {
   getAllInterviewReports,
   generateInterviewReport,
 } from "../services/interview.api";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { InterviewContext } from "../interview.context.jsx";
 import { useParams } from "react-router-dom";
 
@@ -75,6 +75,6 @@ export const useInterview = (interviewId) => {
     }else{
       getReports()
     }
-  })
+  },[interviewId])
   return { loading, report, reports, genrateReport, getReportById, getReports };
 };
