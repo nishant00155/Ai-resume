@@ -23,7 +23,7 @@ const mongoose = require("mongoose");
  * enum:["low", "medium", "high"],
  * }]
  * - preparation plan:[{
- *   sday: "",
+ *   day: "",
  *   focus: "",
  *   task: "",
  * }]
@@ -131,6 +131,10 @@ const interviewReportSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
+    title:{
+      type: String,
+      required: true
+    }
   },
   {
     timestamps: true,

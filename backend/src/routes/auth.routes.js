@@ -36,6 +36,7 @@ authRouter.get("/logout", logoutUserController);
  * @abstraction Get user profile
  * @access Private
  */
-authRouter.get("/profile", auth, profile);
+authRouter.get("/profile", auth, profile); // auth is middleware due to reuse and position
 
 module.exports = authRouter;
+// routes is for to comunicate with frontend

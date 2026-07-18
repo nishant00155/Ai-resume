@@ -1,5 +1,5 @@
 const userModel = require("../models/user.model");
-const tokenBlacklistingModel = require("../models/blacklist.model")
+const tokenBlacklistingModel = require("../models/blacklist.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -54,7 +54,6 @@ async function registerUserController(req, res) {
   });
 }
 
-
 /**
  * @name loginUserController
  * @description Controller to handle user login
@@ -74,14 +73,13 @@ async function loginUserController(req, res) {
     });
   }
 
-
-  const isPasswordValid = await bcrypt.compare(password, user.password)
+  const isPasswordValid = await bcrypt.compare(password, user.password);
   //  internally hashes the plain text and checks if it matches the stored hash.
 
-  if(!isPasswordValid){
+  if (!isPasswordValid) {
     return res.status(400).json({
-        message: "Invalid email or password",
-    })
+      message: "Invalid email or password",
+    });
   }
 
   const token = jwt.sign(
@@ -90,19 +88,17 @@ async function loginUserController(req, res) {
     { expiresIn: "1d" },
   );
 
-  res.cookie("token",token)
+  res.cookie("token", token);
 
   res.status(200).json({
-    message:"user loggedIn successfully",
-    user:({
-        id:user._id,
-        username:user.username,
-        email: user.email
-    })
-  })
-
+    message: "user loggedIn successfully",
+    user: {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+    },
+  });
 }
-
 
 /**
  * @name logoutUserController
@@ -110,20 +106,19 @@ async function loginUserController(req, res) {
  * @route GET /api/auth/logout
  * @access Public
  */
-async function logoutUserController(req,res){
-    const token = req.cookies.token
+async function logoutUserController(req, res) {
+  const token = req.cookies.token;
 
-    if(token){
-        await tokenBlacklistingModel.create({token})
-    }
+  if (token) {
+    await tokenBlacklistingModel.create({ token });
+  }
 
-    res.clearCookie("token")
+  res.clearCookie("token");
 
-    res.status(200).json({
-        message:"user logged out successfully"
-    })
+  res.status(200).json({
+    message: "user logged out successfully",
+  });
 }
-
 
 /**
  * @name profile
@@ -131,25 +126,22 @@ async function logoutUserController(req,res){
  * @route GET /api/auth/profile
  * @access Private
  */
-async function profile(req,res){
-    const userId = req.user.id
+async function profile(req, res) {
+  const userId = req.user.id;
 
-    const user = await userModel.findById(userId).select("-password")   
-    res.status(200).json({
-        user:{
-            userId: user._id,
-            username: user.username,
-            email: user.email
-        }
-    })
+  const user = await userModel.findById(userId).select("-password");
+  res.status(200).json({
+    user: {
+      userId: user._id,
+      username: user.username,
+      email: user.email,
+    },
+  });
 }
-
-
-
 
 module.exports = {
   registerUserController,
   loginUserController,
   logoutUserController,
-  profile
+  profile,
 };
