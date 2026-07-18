@@ -1,4 +1,18 @@
 /* Global reset */
+
+main {
+   min-height: 100vh;   /* full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+.home-wrapper {
+  min-height: 100vh;           /* full viewport height */
+  display: flex;
+  align-items: center;         /* horizontal center */
+  justify-content: center;     /* vertical center */
+}
+
 .home {
   display: flex;
   gap: 2rem;
@@ -8,6 +22,7 @@
   background: rgba(255, 255, 255, 0.7);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(65, 41, 133, 0.2);
+  margin: auto; 
 
   .left,
   .right {
@@ -28,7 +43,9 @@
       outline: none;
       background: #fff;
       color: rgb(65, 41, 133);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
       overflow-y: auto;
 
       &:focus {
@@ -63,7 +80,9 @@
         outline: none;
         background: #fff;
         color: rgb(65, 41, 133);
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
         overflow-y: auto;
 
         &:focus {
@@ -82,7 +101,9 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition:
+        background 0.3s ease,
+        transform 0.2s ease;
 
       &:hover {
         background: rgb(90, 60, 160);
@@ -102,5 +123,104 @@
   .home {
     flex-direction: column;
     gap: 1.5rem;
+  }
+}
+
+/* Recent Reports Section */
+.recent-reports {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto; /* center horizontally */
+  padding: 1.5rem;
+  background: rgba(240, 240, 255, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(65, 41, 133, 0.15);
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: rgb(65, 41, 133);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .reports-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+
+    .report-item {
+      padding: 1rem;
+      border: 2px solid rgb(65, 41, 133);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: rgb(65, 41, 133);
+      }
+
+      .report-meta {
+        font-size: 0.85rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+      }
+
+      .match-score {
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      &.score--high {
+        color: #2e7d32;
+      }
+
+      &.score--mid {
+        color: #f9a825;
+      }
+
+      &.score--low {
+        color: #c62828;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(65, 41, 133, 0.25);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(65, 41, 133, 0.2);
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .recent-reports {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    .reports-list .report-item {
+      padding: 0.8rem;
+    }
   }
 }
