@@ -3,7 +3,7 @@ import "../style/loading.scss";
 import "../style/button.scss";
 import { useAuth } from "../hook/useAuth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const { loading, handleLogin } = useAuth();
@@ -55,6 +55,9 @@ const Login = () => {
 
           <button className="button primary-button">Login</button>
         </form>
+        <p>
+          New here? <Link to="/register">Register</Link>
+        </p>
       </div>
     </main>
   );

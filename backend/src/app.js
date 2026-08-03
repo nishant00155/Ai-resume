@@ -7,9 +7,13 @@ app.use(cookieParser())
 
 app.use(express.json())
 app.use(cors({
-    origin:"arambh.site",
-    credentials:true
-}))
+    origin: [
+        "http://localhost:3000",          // local dev
+        "https://arambh.site",            // custom domain
+        "https://ai-resume-eight-sigma.vercel.app" // Vercel deployment
+    ],
+    credentials: true
+}));
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
 const interviewRouter = require("./routes/interview.routes")

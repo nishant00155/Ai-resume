@@ -3,7 +3,7 @@ import { useAuth } from "../hook/useAuth";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
-const register = () => {
+const Register = () => {
   const { loading, handleRegister } = useAuth();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -64,4 +64,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

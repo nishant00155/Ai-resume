@@ -24,6 +24,28 @@ main {
   color: rgb(65, 41, 133);
 }
 
+/* Auth link */
+.form-container p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;          /* muted gray for text */
+  text-align: center;
+}
+
+.form-container p a {
+  color: rgb(65, 41, 133);   /* matches your heading color */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.form-container p a:hover {
+  color: rgb(85, 61, 153);   /* slightly lighter shade on hover */
+  text-decoration: underline;
+}
+
+
+
 /* Input group */
 .input-group {
   display: flex;
