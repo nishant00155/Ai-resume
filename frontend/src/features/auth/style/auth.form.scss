@@ -1,11 +1,20 @@
+/* Page wrapper */
+main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
 
 /* Card container */
 .form-container {
-  width: 350px;
+  width: min(100%, 350px);
   background: #fff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 /* Heading */
@@ -40,7 +49,3 @@
   border-color: rgb(65, 41, 133);
   outline: none;
 }
-
-
-
-
