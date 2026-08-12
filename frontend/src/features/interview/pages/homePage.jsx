@@ -90,7 +90,7 @@ const Home = () => {
           ></textarea>
         </div>
         <button onClick={handleGenrateReport} className="genrate-btn">
-          Genrate Interview report
+          Generate Interview report
         </button>
       </div>
 </div>
