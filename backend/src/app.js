@@ -10,8 +10,8 @@ app.use(cors({
     origin: [
         "http://localhost:3000",          // local dev
         "http://localhost:5173",          
-        "https://www.arambh.site",            // custom domain
-        "https://www.ai-resume-eight-sigma.vercel.app" // Vercel deployment
+        "https://arambh.site",            // custom domain
+        "https://ai-resume-eight-sigma.vercel.app" // Vercel deployment
     ],
     credentials: true
 }));
